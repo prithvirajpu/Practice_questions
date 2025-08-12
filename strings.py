@@ -1,3 +1,28 @@
+# Palindrome Checking
+
+st='malayalam'
+def palindrome(st):
+    f=0
+    l=len(st)-1
+    while f<l:
+        if st[f]!=st[l]:
+            return False
+        else:
+            f+=1
+            l-=1
+    return True
+if palindrome(st):
+    print('palindrome')
+else:
+    print('Not')
+
+# all substrings
+
+s = "abc"
+for i in range(len(s)):           
+    for j in range(i+1, len(s)+1):   
+        print(s[i:j])
+
 # String compression
 
 s = "aaabbcccc"
