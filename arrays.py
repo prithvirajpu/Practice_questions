@@ -1,3 +1,5 @@
+
+
 # Deleting item from certain position
 
 arr=[1,2,3,4,5]

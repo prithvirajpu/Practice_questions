@@ -1,3 +1,25 @@
+# Capitalizing each first word
+
+s='hello there iam here'
+res=[]
+for i in s.split():
+    res.append(i[0].upper()+i[1:])
+
+result=' '.join(res)
+print(result)
+
+# Same with the list comprehension
+result= ' '.join(i[0].upper()+i[1:] for i in s.split())
+print(result)
+#array or string rotating by certain inde A
+
+s = [1,2,3,4,5,6,7]
+s='hello there'
+k=2
+k=k%len(s)
+res=s[-k:]+s[:-k]
+print(res)
+
 # Palindrome Checking
 
 st='malayalam'
