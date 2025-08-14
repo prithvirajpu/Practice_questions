@@ -1,3 +1,49 @@
+# FInd the second largest element
+
+arr=[1,2,3,4,5,6,7,88,44,33,56,66]
+def sec_largest(arr,index=0,large=0,sec=0):
+    if index==len(arr):
+        return sec
+    if arr[index]>large:
+        sec=large
+        large=arr[index]
+    elif arr[index]>sec and arr[index]!=large:
+        sec=arr[index]
+    return sec_largest(arr,index+1,large,sec)
+print(sec_largest(arr))
+
+# Find large element
+
+arr=[1,2,3,4,5,6,7,88,44,33,56,66]
+def largerst_element(arr,index=0,large=0):
+    if index==len(arr):
+        return large
+    if arr[index]>large:
+        large=arr[index]
+    return largerst_element(arr,index+1,large)
+
+print(largerst_element(arr))
+
+# Binary search
+
+def binary_search(arr,left,right,target):
+    if left>right:
+        return -1
+    mid=(left+right)//2
+    if arr[mid]==target:
+        return mid
+    if arr[mid]<target:
+        return binary_search(arr,mid+1,right,target)
+    else:
+        return binary_search(arr,left,mid-1,target)
+
+
+arr=[1,2,3,4,5,6,7,8,9]
+target=8
+left=0
+right=len(arr)-1
+print(binary_search(arr,left,right,target))
+
 # Reverse of the number
 
 def reversing(n,rev=0):
@@ -5,6 +51,14 @@ def reversing(n,rev=0):
         return rev
     return reversing(n//10,rev=rev*10+n%10)
 print(reversing(12345))
+
+# Reversing string
+
+def string_reverse(s):
+    if len(s)<=1:
+        return s
+    return string_reverse(s[1:])+s[0]
+print(string_reverse('hello there'))
 
 # Sum of digits
 
