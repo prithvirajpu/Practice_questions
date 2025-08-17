@@ -9,9 +9,11 @@ result=' '.join(res)
 print(result)
 
 # Same with the list comprehension
+
 result= ' '.join(i[0].upper()+i[1:] for i in s.split())
 print(result)
-#array or string rotating by certain inde A
+
+#array or string rotating by certain index A
 
 s = [1,2,3,4,5,6,7]
 s='hello there'
@@ -66,6 +68,7 @@ print(len(s1) == len(s2) and s2 in s1+s1)
 
 # Anagram methods
 # First create frequency dictionries for both string and the check is it same - or use sorted inbuilt function
+
 st='madam'
 st1='daamm'
 new={}
@@ -113,6 +116,7 @@ for i, j in new.items():
         break
 
 # Another method for first non repeating character 
+
 st='hello there iam here'
 for i in st:
     if st.count(i)==1:
@@ -128,6 +132,7 @@ for i in st:
 print(new)
 
 # some another methods-slicing 
+
 print(st[::-1])
 
 # Find the frequency of the string 

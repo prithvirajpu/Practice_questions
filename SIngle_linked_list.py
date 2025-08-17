@@ -90,17 +90,40 @@ class LinkedList:
             val.append(temp.data)
             temp=temp.next
         return val==val[::-1]
+    def reverse(self):
+        temp=self.head
+        prev=None
+        while temp:
+            save=temp.next
+            temp.next=prev
+            prev=temp
+            temp=save
+        self.head=prev
+    def find_middle(self):
+        slow=self.head
+        fast=self.head
+        # check=None
+        while fast and fast.next:
+            fast=fast.next.next
+            # check=slow
+            slow=slow.next
+        print(f'Middle node is {slow.data}')
+        # for deleting the middle one
+        
+        # check.next=slow.next
+        # slow.next.prev=check
 
 x=LinkedList()
 x.insertion(10)
 x.insertion(20)
-x.insertion(10)
+x.insertion(30)
 x.insertion_position(99,2)
 x.deletion_position(2)
 x.insert_begining(100)
 x.insert_end(999)
 x.delete_begining()
 x.delete_end()
+x.reverse()
 x.print_list()
 if x.palindrome():
     print("Palindrome")

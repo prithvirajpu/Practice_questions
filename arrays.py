@@ -1,5 +1,19 @@
 
 
+
+# Smallest and largest
+
+arr=[3,4,5,2,1,33,66,22,123,43,47,24]
+small=arr[0]
+large=arr[0]
+for i in arr:
+    if i<small:
+        small=i
+    if i>large:
+        large=i
+print(small)
+print(large)
+
 # Deleting item from certain position
 
 arr=[1,2,3,4,5]
