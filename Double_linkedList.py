@@ -58,6 +58,7 @@ class LinkedList:
             temp.next.prev=new_node
         temp.next=new_node
         new_node.prev=temp
+
     def print_list(self):
         temp=self.head
         while temp:
@@ -78,6 +79,8 @@ class LinkedList:
             left=left.next
             right=right.prev
         return True
+    def delete_first(self):
+        self.head=self.head.next
 
 x=LinkedList()
 x.insertion(10)
@@ -89,5 +92,5 @@ else:
     print('not')
 x.insert_beginig(99)
 x.insert_position(100,2)
-
+x.delete_first()
 x.print_list()

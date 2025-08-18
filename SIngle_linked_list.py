@@ -109,13 +109,23 @@ class LinkedList:
             slow=slow.next
         print(f'Middle node is {slow.data}')
         # for deleting the middle one
-        
+
         # check.next=slow.next
         # slow.next.prev=check
+    def duplicate_delete(self):
+        lst=[]
+        temp=self.head
+        while temp.next:
+            lst.append(temp.data)
+            if temp.next.data in lst:
+                temp.next=temp.next.next
+            else:
+                temp=temp.next
 
 x=LinkedList()
 x.insertion(10)
 x.insertion(20)
+x.insertion(30)
 x.insertion(30)
 x.insertion_position(99,2)
 x.deletion_position(2)
@@ -124,6 +134,7 @@ x.insert_end(999)
 x.delete_begining()
 x.delete_end()
 x.reverse()
+x.duplicate_delete()
 x.print_list()
 if x.palindrome():
     print("Palindrome")
