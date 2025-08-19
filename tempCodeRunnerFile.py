@@ -1,7 +1,0 @@
-x.insertion_position(99,2)
-# x.deletion_position(2)
-# x.insert_begining(100)
-# x.insert_end(999)
-# x.delete_begining()
-# x.delete_end()
-# x.reverse()

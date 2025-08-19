@@ -121,22 +121,46 @@ class LinkedList:
                 temp.next=temp.next.next
             else:
                 temp=temp.next
+    def sorting(self):
+        val=[]
+        temp=self.head
+        while temp:
+            val.append(temp.data)
+            temp=temp.next
+        val.sort()
+        temp=self.head
+        for i in val:
+            temp.data=i
+            temp=temp.next
+    def delete_value(self,val):
+        if self.head is None:
+            return
+        if self.head.data==val:
+            self.head=self.head.next
+            return
+        temp=self.head
+        while temp.next is not None and temp.next.data!=val:
+            temp=temp.next
+        if temp.next is not None:
+            temp.next=temp.next.next
 
 x=LinkedList()
 x.insertion(10)
 x.insertion(20)
 x.insertion(30)
-x.insertion(30)
-x.insertion_position(99,2)
-x.deletion_position(2)
-x.insert_begining(100)
-x.insert_end(999)
-x.delete_begining()
-x.delete_end()
-x.reverse()
-x.duplicate_delete()
+# x.insertion(30)
+# x.insertion_position(99,2)
+# x.deletion_position(2)
+# x.insert_begining(100)
+# x.insert_end(999)
+# x.delete_begining()
+# x.delete_end()
+# x.reverse()
+# x.duplicate_delete()
+# x.sorting()
+x.delete_value(30)
 x.print_list()
-if x.palindrome():
-    print("Palindrome")
-else:
-    print('Not palindrome')
+# if x.palindrome():
+#     print("Palindrome")
+# else:
+#     print('Not palindrome')
