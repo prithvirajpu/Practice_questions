@@ -111,7 +111,6 @@ class LinkedList:
         # for deleting the middle one
 
         # check.next=slow.next
-        # slow.next.prev=check
     def duplicate_delete(self):
         lst=[]
         temp=self.head
@@ -158,7 +157,7 @@ x.insertion(30)
 # x.reverse()
 # x.duplicate_delete()
 # x.sorting()
-x.delete_value(30)
+# x.delete_value(30)
 x.print_list()
 # if x.palindrome():
 #     print("Palindrome")
