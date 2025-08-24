@@ -22,3 +22,38 @@ for i in range(len(arr)-1):
     if mini!=i:
         arr[i],arr[mini]=arr[mini],arr[i]
 print(arr)
+
+# Insertion sorting
+
+arr=[3,2,5,6,77,4,55,12]
+for i in range(1,len(arr)):
+    temp=arr[i]
+    j=i-1
+    while j>=0 and temp<arr[j]:
+        arr[j+1]=arr[j]
+        j-=1
+    arr[j+1]=temp
+print(arr)
+
+# Merge sorting
+
+arr=[3,2,5,6,77,4,55,12]
+def merge_sorting(arr):
+    if len(arr)<=1:
+        return arr
+    mid=len(arr)//2
+    left=merge_sorting(arr[:mid])
+    right=merge_sorting(arr[mid:])
+    return merging(left,right)
+def merging(left,right):
+    result=[]
+    i=j=0
+    while i<len(left) and j<len(right):
+        if left[i]>right[j]:
+            result.append(right[j])
+        else:
+            result.append(left[i])
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+print(merge_sorting(arr))
