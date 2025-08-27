@@ -37,6 +37,37 @@ print(arr)
 
 # Merge sorting
 
+# Efficient one because of the index calls
+
+def merge_sort(arr, s, e):
+    if e - s <= 1:
+        return
+    mid = (s + e) // 2
+    merge_sort(arr, s, mid)
+    merge_sort(arr, mid, e)
+    merge(arr, s, mid, e)
+def merge(arr, s, m, e):
+    mix = []
+    i, j = s, m
+    while i < m and j < e:
+        if arr[i] < arr[j]:
+            mix.append(arr[i])
+            i += 1
+        else:
+            mix.append(arr[j])
+            j += 1
+    if i < m:
+        mix.extend(arr[i:m])
+    if j < e:
+        mix.extend(arr[j:e])
+    for k in range(len(mix)):
+        arr[s + k] = mix[k]
+arr = [5, 2, 9, 1, 6, 3]
+merge_sort(arr, 0, len(arr))
+print(arr)
+
+# Less efficient because of the slicing 
+
 arr=[3,2,5,6,77,4,55,12]
 def merge_sorting(arr):
     if len(arr)<=1:
