@@ -1,0 +1,6 @@
+x=Stack()
+# x.push(10)
+# x.push(20)
+# x.push(30)
+# print(x.peek())
+# x.print()

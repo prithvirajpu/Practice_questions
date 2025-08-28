@@ -20,26 +20,3 @@ for i in range(k):
     if flag==0:
         break
 print(arr[-k])
-
-def quick_sort(nums, low, high):
-    if low >= high:
-        return
-    s = low
-    e = high
-    mid = (s + e) // 2
-    pivot = nums[mid]
-    while s <= e:
-        while nums[s] < pivot:
-            s += 1
-        while nums[e] > pivot:
-            e -= 1
-        if s <= e:
-            nums[s], nums[e] = nums[e], nums[s]
-            s += 1
-            e -= 1
-    quick_sort(nums, low, e)
-    quick_sort(nums, s, high)
-    
-arr = [5, 4, 33, 454, 54, 65]
-quick_sort(arr, 0, len(arr) - 1)
-print(arr)
