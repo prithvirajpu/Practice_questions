@@ -23,12 +23,12 @@ class Stack:
         else:
             for i in self.stack:
                 print(i)
-# x=Stack()
-# x.push(10)
-# x.push(20)
-# x.push(30)
-# print(x.peek())
-# x.print()
+x=Stack()
+x.push(10)
+x.push(20)
+x.push(30)
+print(x.peek())
+x.print()
 
 # stack using Linked list
 class Node:
