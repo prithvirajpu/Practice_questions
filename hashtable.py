@@ -42,14 +42,13 @@ class HashTable:
                 print(f"Index {i}: {bucket}")
 
 
-# ✅ Example Usage
 ht = HashTable(10)
 ht.set("name", "Alice")
 ht.set("age", 25)
 ht.set("city", "Paris")
 
-print(ht.get("name"))   # Alice
-print(ht.get("city"))   # Paris
+print(ht.get("name"))   
+print(ht.get("city")) 
 
 ht.remove("age")
 ht.display()

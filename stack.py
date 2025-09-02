@@ -89,3 +89,19 @@ def is_valid(s):
 
 print(is_valid('([]{(}))'))
 print(is_valid('([]{})'))
+
+# delete the middle element
+
+def deleteMiddle():
+    stack = [1, 2, 3, 4, 5, 7, 8, 9, 2]
+    stack2 = []
+    mid = len(stack) // 2 
+    while mid > 0:
+        stack2.append(stack.pop())
+        mid -= 1
+    stack.pop()
+    while stack2:
+        stack.append(stack2.pop())
+    print(stack)
+
+deleteMiddle()
