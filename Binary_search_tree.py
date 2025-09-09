@@ -39,7 +39,7 @@ class BST:
         
     #  preorder
     #  postorder
-    #  inorder   
+    #  inorder
     def preorder(self,root):
         if root is None:
             return
@@ -94,13 +94,27 @@ class BST:
         return current.data
 
             
-        
+    def sortedarray_to_BST(self,arr):
+        if not arr:
+            return None
+        self.root=self.converter(arr,0,len(arr)-1)
+    def converter(self,arr,start,end):
+        if start>end:
+            return None
+        mid=(start+end)//2
+        node=Node(arr[mid])
+        node.left=self.converter(arr,start,mid-1)
+        node.right=self.converter(arr,mid+1,end)
+        return node
+
 x=BST()
-x.insert(10)
-x.insert(20)
-x.insert(30)
-x.insert(40)
-x.insert(8)
+# x.insert(10)
+# x.insert(20)
+# x.insert(30)
+# x.insert(40)
+# x.insert(8)
+arr=[1,2,3,4,5,6]
+x.sortedarray_to_BST(arr)
 print(x.search(x.root,40))
 print(x.search(x.root,60))
 x.preorder(x.root)
