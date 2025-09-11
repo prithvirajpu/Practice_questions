@@ -36,18 +36,26 @@ class MinHeap:
         right = self.get_right(index)
 
         if left < len(self.heap) and self.heap[left] < self.heap[smallest]:
-            smallest = left
+            smallest = left 
         if right < len(self.heap) and self.heap[right] < self.heap[smallest]:
             smallest = right
 
         if smallest != index:
             self.swap(index, smallest)
             self.down_heap(smallest)
+    def heap_sort_copy(self):
+        temp = MinHeap()
+        temp.heap = self.heap[:]  # copy current heap
+        data = []
+        while temp.heap:
+            data.append(temp.remove())
+        return data
             
 x=MinHeap()
 x.insert(40)
 x.insert(10)
 x.insert(20)
 x.insert(30)
-x.remove()
+# x.remove()
 print(x.heap)
+print(x.heap_sort_copy())

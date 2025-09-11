@@ -86,12 +86,22 @@ class BST:
                 root.data = mindata                  # replace value
                 root.right = self.deleteNode(root.right, mindata)  # delete successor
         return root
-
+    
+    # Find out the minimum val from the BST - the node is root when calling manually
     def minValue(self, node):
-        current = node
-        while current.left:   # keep going left to find min
-            current = current.left
-        return current.data
+        if node is None:
+            return
+        while node.left:   # keep going left to find min
+            node = node.left
+        return node.data
+
+    # Find out the maximum val from the BST- the node is root when calling manually
+    def max_val(self,node):
+        if node is None:
+            return None
+        while node.right:
+            node=node.right
+        return node.data
 
             
     def sortedarray_to_BST(self,arr):
@@ -106,6 +116,32 @@ class BST:
         node.left=self.converter(arr,start,mid-1)
         node.right=self.converter(arr,mid+1,end)
         return node
+    # checking is it a Binary search tree or not
+
+    def is_bst(self,root,mini=float('-inf'),maxi=float('inf')):
+        if root is None:
+            return True
+        if root.data<=mini or root.data>=maxi:
+            return False
+        return (self.is_bst(root.left,mini,root.data) and self.is_bst(root.right,root.data,maxi) )
+    
+    # Find the closest value to the target
+    
+    def closest(self,root,target):
+        if root is None:
+            return None
+        closest=root.data
+        while root is not None:
+            if abs(target-root.data) < abs(target-closest):
+                closest=root.data
+            if target<root.data:
+                root=root.left
+            elif target>root.data:
+                root=root.right
+            else:
+                break
+        return closest
+
 
 x=BST()
 # x.insert(10)
@@ -115,11 +151,13 @@ x=BST()
 # x.insert(8)
 arr=[1,2,3,4,5,6]
 x.sortedarray_to_BST(arr)
-print(x.search(x.root,40))
-print(x.search(x.root,60))
-x.preorder(x.root)
-print()
-x.postorder(x.root)
-print()
-x.deleteNode(x.root,10)
-x.inorder(x.root)
+# print(x.search(x.root,40))
+# print(x.search(x.root,60))
+# x.preorder(x.root)
+# print()
+# x.postorder(x.root)
+# print()
+# x.root=x.deleteNode(x.root,6)
+# x.inorder(x.root)
+# print(x.is_bst(x.root))
+print(x.closest(x.root,10))
