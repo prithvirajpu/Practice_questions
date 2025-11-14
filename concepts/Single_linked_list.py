@@ -163,3 +163,177 @@ x.print_list()
 #     print("Palindrome")
 # else:
 #     print('Not palindrome')
+
+
+
+
+    # ----------------------------------------------------
+    # MERGE SORT (BEST SORTING FOR LINKED LISTS)
+    # ----------------------------------------------------
+
+    def sort(self):
+        self.head = self.merge_sort(self.head)
+
+    def merge_sort(self, head):
+        if not head or not head.next:
+            return head
+
+        mid = self.get_mid(head)
+        right = mid.next
+        mid.next = None
+
+        left_sorted = self.merge_sort(head)
+        right_sorted = self.merge_sort(right)
+
+        return self.merge(left_sorted, right_sorted)
+
+    def get_mid(self, head):
+        slow = head
+        fast = head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+    def merge(self, a, b):
+        dummy = Node(0)
+        tail = dummy
+
+        while a and b:
+            if a.data <= b.data:
+                tail.next = a
+                a = a.next
+            else:
+                tail.next = b
+                b = b.next
+            tail = tail.next
+
+        tail.next = a if a else b
+        return dummy.next
+    # ----------------------------------------------------
+    # REMOVE DUPLICATES
+    # ----------------------------------------------------
+
+    # Sorted list
+    def remove_duplicates_sorted(self):
+        temp = self.head
+        while temp and temp.next:
+            if temp.data == temp.next.data:
+                temp.next = temp.next.next
+            else:
+                temp = temp.next
+    # ----------------------------------------------------
+    # LOOP DETECTION (FLOYD'S ALGO)
+    # ----------------------------------------------------
+
+    def has_loop(self):
+        slow = fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
+    # ----------------------------------------------------
+    # REMOVE Nth NODE FROM END
+    # ----------------------------------------------------
+
+    def remove_nth_from_end(self, n):
+        dummy = Node(0)
+        dummy.next = self.head
+
+        fast = slow = dummy
+
+        for _ in range(n):
+            fast = fast.next
+
+        while fast.next:
+            fast = fast.next
+            slow = slow.next
+
+        slow.next = slow.next.next
+        self.head = dummy.next
+
+    # ----------------------------------------------------
+    # REVERSE IN GROUPS OF K
+    # ----------------------------------------------------
+
+    def reverse_k_group(self, head, k):
+        temp = head
+        count = 0
+        while temp and count < k:
+            temp = temp.next
+            count += 1
+        if count < k:
+            return head
+
+        prev = None
+        curr = head
+        next_node = None
+
+        for _ in range(k):
+            next_node = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_node
+
+        head.next = self.reverse_k_group(curr, k)
+        return prev
+
+    def apply_reverse_k_group(self, k):
+        self.head = self.reverse_k_group(self.head, k)
+
+    # ----------------------------------------------------
+    # ROTATE LIST (MOVE LAST K NODES TO FRONT)
+    # ----------------------------------------------------
+
+    def rotate(self, k):
+        if not self.head or k == 0:
+            return
+
+        temp = self.head
+        length = 1
+
+        while temp.next:
+            temp = temp.next
+            length += 1
+
+        k %= length
+        if k == 0:
+            return
+
+        temp.next = self.head  # make it circular
+
+        steps = length - k
+        new_tail = self.head
+
+        for _ in range(steps - 1):
+            new_tail = new_tail.next
+
+        self.head = new_tail.next
+        new_tail.next = None
+
+    # ----------------------------------------------------
+    # ADD TWO NUMBERS (LINKED LIST NUMBERS)
+    # ----------------------------------------------------
+
+    def add_two_numbers(self, l1, l2):
+        dummy = Node(0)
+        tail = dummy
+        carry = 0
+
+        while l1 or l2 or carry:
+            v1 = l1.data if l1 else 0
+            v2 = l2.data if l2 else 0
+
+            total = v1 + v2 + carry
+            carry = total // 10
+
+            tail.next = Node(total % 10)
+            tail = tail.next
+
+            if l1: l1 = l1.next
+            if l2: l2 = l2.next
+
+        return dummy.next

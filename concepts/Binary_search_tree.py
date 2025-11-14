@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     def __init__(self,data):
         self.data=data
@@ -58,6 +60,20 @@ class BST:
         self.inorder(root.left)
         print(root.data,end='-')
         self.inorder(root.right)
+    def is_empty(self):
+        return self.root is None
+    def level_order(self):
+        if self.is_empty():
+            print("Empty")
+            return
+        queue = deque([self.root])   # use deque for efficient pops
+        while queue:
+            current = queue.popleft()
+            print(current.data)
+            if current.left:
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
 
     def deleteNode(self, root, data):
         if root is None:
@@ -141,7 +157,20 @@ class BST:
             else:
                 break
         return closest
-
+    def inorder_for_large(self,root,arr):
+        if root is None:
+            return None
+        self.inorder_for_large(root.left,arr)
+        arr.append(root.data)
+        self.inorder_for_large(root.right,arr)
+    def sec_largest(self,root):
+        if root is None:
+            return None
+        arr=[]
+        self.inorder_for_large(root,arr)
+        if len(arr)<2:
+            return None
+        return arr[-2]
 
 x=BST()
 # x.insert(10)
@@ -161,3 +190,6 @@ x.sortedarray_to_BST(arr)
 # x.inorder(x.root)
 # print(x.is_bst(x.root))
 print(x.closest(x.root,10))
+x.level_order()
+print('second largest' ,x.sec_largest(x.root))
+

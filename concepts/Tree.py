@@ -52,7 +52,7 @@ class Btree:
         queue=[self.root]
         while queue:
             current=queue.pop(0)
-            if current.left is None:
+            if current.left is None:    
                 current.left=new_node
                 break
             else:
