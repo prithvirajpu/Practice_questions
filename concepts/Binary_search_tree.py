@@ -132,6 +132,7 @@ class BST:
         node.left=self.converter(arr,start,mid-1)
         node.right=self.converter(arr,mid+1,end)
         return node
+    
     # checking is it a Binary search tree or not
 
     def is_bst(self,root,mini=float('-inf'),maxi=float('inf')):
@@ -142,7 +143,7 @@ class BST:
         return (self.is_bst(root.left,mini,root.data) and self.is_bst(root.right,root.data,maxi) )
     
     # Find the closest value to the target
-    
+
     def closest(self,root,target):
         if root is None:
             return None
@@ -157,6 +158,7 @@ class BST:
             else:
                 break
         return closest
+    
     def inorder_for_large(self,root,arr):
         if root is None:
             return None
@@ -171,6 +173,10 @@ class BST:
         if len(arr)<2:
             return None
         return arr[-2]
+    def max_height(self,root):
+        if root is None:
+            return 0
+        return 1+max(self.max_height(root.left),self.max_height(root.right))
 
 x=BST()
 # x.insert(10)
@@ -192,4 +198,5 @@ x.sortedarray_to_BST(arr)
 print(x.closest(x.root,10))
 x.level_order()
 print('second largest' ,x.sec_largest(x.root))
+print(x.max_height(x.root))
 
