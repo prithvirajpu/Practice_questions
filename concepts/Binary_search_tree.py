@@ -143,7 +143,7 @@ class BST:
         return (self.is_bst(root.left,mini,root.data) and self.is_bst(root.right,root.data,maxi) )
     
     # Find the closest value to the target
-
+    
     def closest(self,root,target):
         if root is None:
             return None
@@ -165,6 +165,7 @@ class BST:
         self.inorder_for_large(root.left,arr)
         arr.append(root.data)
         self.inorder_for_large(root.right,arr)
+        
     def sec_largest(self,root):
         if root is None:
             return None
@@ -173,10 +174,19 @@ class BST:
         if len(arr)<2:
             return None
         return arr[-2]
+    
     def max_height(self,root):
         if root is None:
             return 0
         return 1+max(self.max_height(root.left),self.max_height(root.right))
+    def mini_height(self,root):
+        if root is None:
+            return 0
+        if root.left is None:
+            return 1+self.mini_height(root.right)
+        if root.right is None:
+            return 1+self.mini_height(root.left)
+        return 1+min(self.mini_height(root.left),self.mini_height(root.right))
 
 x=BST()
 # x.insert(10)
@@ -184,8 +194,10 @@ x=BST()
 # x.insert(30)
 # x.insert(40)
 # x.insert(8)
-arr=[1,2,3,4,5,6]
-x.sortedarray_to_BST(arr)
+arr=[20,11,21,22,23,24,25,26]
+for i in arr:
+    x.insert(i)
+# x.sortedarray_to_BST(arr)
 # print(x.search(x.root,40))
 # print(x.search(x.root,60))
 # x.preorder(x.root)
@@ -199,4 +211,4 @@ print(x.closest(x.root,10))
 x.level_order()
 print('second largest' ,x.sec_largest(x.root))
 print(x.max_height(x.root))
-
+print(x.mini_height(x.root))

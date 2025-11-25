@@ -46,6 +46,7 @@ def merge_sort(arr, s, e):
     merge_sort(arr, s, mid)
     merge_sort(arr, mid, e)
     merge(arr, s, mid, e)
+
 def merge(arr, s, m, e):
     mix = []
     i, j = s, m
@@ -62,6 +63,7 @@ def merge(arr, s, m, e):
         mix.extend(arr[j:e])
     for k in range(len(mix)):
         arr[s + k] = mix[k]
+        
 arr = [5, 2, 9, 1, 6, 3]
 merge_sort(arr, 0, len(arr))
 print(arr)
