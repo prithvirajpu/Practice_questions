@@ -78,12 +78,49 @@ class Btree:
         left=self.height(node.left) if node.left else -1
         right=self.height(node.right) if node.right else -1
         return max(left,right)+1
-    
+    def symmetric(self,root):
+        if not root:
+            return True
+        def check(left,right):
+            if not left and not right:
+                return True
+            if not left or not right:
+                return False
+            if left.data!=right.data:
+                return False
+            return check(left.left,right.right)and check(left.right,right.left)
+        return check(root.left,root.right)
+    def LowestCommonAncestor(self,root,p,q):
+        if root is None or p==root or q==root:
+            return root
+        left=self.LowestCommonAncestor(root.left,p,q)
+        right=self.LowestCommonAncestor(root.right,p,q)
+        if left and right:
+            return root
+        return left if left else right
+    def search(self,root,val):
+        if root is None:
+            return None
+        if root.data == val:
+            return root
+        
+        left = self.search(root.left, val)
+        if left:
+            return left
+        
+        return self.search(root.right, val)
+
+
+
 y=Btree()
 y.insert(10)
 y.insert(90)
 y.insert(70)
 y.insert(80)
+p=y.search(y.root,80)
+q=y.search(y.root,70)
+ans=y.LowestCommonAncestor(y.root,p,q)
+print('lca',ans.data)
 y.inorder(y.root)
 print(y.height())
 

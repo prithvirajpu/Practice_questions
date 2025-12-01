@@ -29,7 +29,7 @@ def sec_largest(arr,index=0,large=0,sec=0):
 print(sec_largest(arr))
 
 # Find large element
-
+ 
 arr=[1,2,3,4,5,6,7,88,44,33,56,66]
 def largerst_element(arr,index=0,large=0):
     if index==len(arr):
