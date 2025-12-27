@@ -136,6 +136,7 @@ class LinkedList:
         for i in val:
             temp.data=i
             temp=temp.next
+            
 x=LinkedList()
 x.insertion(10)
 x.insertion(20)

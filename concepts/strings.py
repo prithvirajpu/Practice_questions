@@ -1,3 +1,20 @@
+# find out if the keys are same type
+
+data = {"a": 1, "b": 2}
+result=len({type(i) for i in data})==1
+print(result)
+# counting days difference
+from datetime import date
+
+d1=date(2025,1,1)
+d2=date(2025,1,10)
+print((d2-d1).days)
+# random number between 1,100 using lambda
+import random
+
+res=lambda:random.randint(1,100)
+print(res())
+
 # Capitalizing each first word
 
 s='hello there iam here'
@@ -153,3 +170,20 @@ new={}
 for i in st:
     new[i]=new.get(i,0)+1
 print(new)
+
+# sum of the integer numbers
+arr={'name':'prithviraj','age':20,'nums':[1,2,3,4,5],'next':{
+    'val':10
+}}
+def num(arr):
+    total=0
+    if isinstance(arr,int):
+        return arr
+    if isinstance(arr,list):
+        for i in arr:
+           total+=num(i)
+    if isinstance(arr,dict):
+        for i,j in arr.items():
+            total+=num(j)
+    return total
+print(num(arr))

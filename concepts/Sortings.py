@@ -116,4 +116,3 @@ def quick_sort(nums, low, high):
 arr = [5, 4, 33, 454, 54, 65]
 quick_sort(arr, 0, len(arr) - 1)
 print(arr)
-    

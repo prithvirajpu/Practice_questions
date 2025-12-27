@@ -50,7 +50,7 @@ class MinHeap:
         while temp.heap:
             data.append(temp.remove())
         return data
-            
+        
 x=MinHeap()
 x.insert(40)
 x.insert(10)

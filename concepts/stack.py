@@ -23,6 +23,7 @@ class Stack:
         else:
             for i in self.stack:
                 print(i)
+                
 x=Stack()
 x.push(10)
 x.push(20)
