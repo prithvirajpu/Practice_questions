@@ -1,3 +1,30 @@
+# monkey patching-runtime modifying the methods functions 
+class Person:
+    def greet(self):
+        return 'hello'
+def new_greet(self):
+    return 'new_greet'
+Person.greet=new_greet
+p=Person()
+print(p.greet())
+
+# creating decorator for finding the time
+import time
+def outer(fn):
+    def inner(x):
+        start=time.time()
+        fn(x)
+        end=time.time()
+        print(f'time taken {end-start:.2f}')
+    return inner
+@outer
+def fn(x):
+    res=[]
+    for i in range(x):
+        res.append(i**2)
+    return res
+fn(1000000)
+
 # Generator function 
 # printing odd numbers
 def odd_number():
@@ -63,6 +90,3 @@ print(os.getenv('secret_key'))
 def fn(a):
     assert a<0,'it is greater'
 # fn(10)
-
-
-

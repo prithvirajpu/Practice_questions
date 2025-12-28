@@ -1,3 +1,10 @@
+# remove the non string values from the dict
+data={'name':'prithviraj','age':23}
+for i in list(data.keys()):
+    if not isinstance(data[i],str):
+        del data[i]
+print(data)
+
 # find out if the keys are same type
 
 data = {"a": 1, "b": 2}

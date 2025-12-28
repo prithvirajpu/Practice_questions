@@ -1,3 +1,13 @@
+# Find subarrays which give a target sum
+arr=[1,2,3,4,5,6,7]
+target=6
+for i in range(len(arr)):
+    curr_sum=0
+    for j in range(i,len(arr)):
+        curr_sum+=arr[j]
+        if curr_sum==target:
+            print((arr[i:j+1]))
+
 # Smallest and largest
 
 arr=[3,4,5,2,1,33,66,22,123,43,47,24]

@@ -131,7 +131,7 @@ class LinkedList:
         for i in val:
             temp.data=i
             temp=temp.next
-    def delete_value(self,val):
+    def delete_value(self,val): 
         if self.head is None:
             return
         if self.head.data==val:

@@ -94,6 +94,7 @@ print(merge_sorting(arr))
 
 
 # Quick sort
+
 def quick_sort(nums, low, high):
     if low >= high:
         return
