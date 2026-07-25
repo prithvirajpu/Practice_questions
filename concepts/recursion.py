@@ -1,3 +1,20 @@
+# fibonacci sum
+def fibo(val):
+    if val<=1:
+        return val
+    return fibo(val-1)+fibo(val-2)
+# print(fibo(10))
+
+# efficient way
+def fib(val,memo={}):
+    if val<=1:
+        return val
+    if val in memo:
+        return memo[val]
+    memo[val]=fib(val-1,memo)+fib(val-2,memo)
+    return memo[val]
+print('this is the efficient sum of fib values',fib(50))
+
 # Anagram
 
 def anagram(s1,s2):
