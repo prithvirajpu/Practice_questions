@@ -62,7 +62,7 @@ class LinkedList:
     # Deletion from a specific position
     def deletion_position(self,index):
         if index==0:
-            self.head=None
+            self.head=self.head.next
             return
         temp=self.head
         count=0
