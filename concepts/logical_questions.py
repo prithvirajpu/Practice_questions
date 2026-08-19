@@ -20,7 +20,7 @@ for i in arr2:
     
 print(res)
 
-# remove the duplicates
+# remove the duplicates from sorted array
 
 arr=[1,1,2,2,3,3,4,5,6,7,7,8,8,9,9]
 
@@ -29,4 +29,21 @@ for i in range(1,len(arr)-1):
     if arr[i]!=arr[j]:
         j+=1
         arr[j]=arr[i]
+print(arr)
+
+# unsorted array duplicate deletion with builtin methods
+
+arr = [1, 2, 3, 4, 2, 3, 4, 2, 3, 4, 4, 45, 56, 4, 5, 5, 5, 5, 5, 5, 54, 4]
+
+arr=list(dict.fromkeys(arr))
+print(arr)
+
+# another way
+seen= set()
+j=0
+for i in arr:
+    if i not in seen:
+        seen.add(i)
+        arr[j]=i
+        j+=1
 print(arr)
