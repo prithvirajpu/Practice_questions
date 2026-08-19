@@ -20,3 +20,13 @@ for i in arr2:
     
 print(res)
 
+# remove the duplicates
+
+arr=[1,1,2,2,3,3,4,5,6,7,7,8,8,9,9]
+
+j=0
+for i in range(1,len(arr)-1):
+    if arr[i]!=arr[j]:
+        j+=1
+        arr[j]=arr[i]
+print(arr)
