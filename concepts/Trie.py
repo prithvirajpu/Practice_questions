@@ -45,8 +45,28 @@ class Trie:
         dfs(current, list(prefix))
         return words
 
+    def delete(self,word):
+        path=[]
+        current=self.root
+        for i in word:
+            if i not in current.children:
+                return False
+            path.append((current,i))
+            current=current.children[i]
+        if not current.end:
+            return False
+        current.end=False
+        for i,j in reversed(path):
+            child=i.children[j]
+            if not child.end and not child.children:
+                del i.children[j]
+            else:
+                break
+        return True
 x=Trie()
 x.insert('hello')
+x.insert('hell')
 x.insert('weather')
 print(x.search('weather'))
+x.delete('hell')
 print(x.autocomplete('hel'))
