@@ -46,4 +46,4 @@ for i in arr:
         seen.add(i)
         arr[j]=i
         j+=1
-print(arr)
+print(arr[:j])
