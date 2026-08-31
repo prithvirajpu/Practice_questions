@@ -39,14 +39,16 @@ class Graph:
     # BFS Traversal
     # -----------------
     def bfs(self,val):
+        if val not in self.adj_list:
+            return []
         visited=set()
         result=[]
         visited.add(val)
-        queue=[val]
+        queue=[val] #deque([val])
         while queue:
-            vertex=queue.pop(0)
+            vertex=queue.pop(0) #queue.popleft()
             result.append(vertex)
-            for i in self.adj_list[vertex]:
+            for i in self.adj_list[vertex]: #for i in self.adj_list.get(vertex,[]):
                 if i not in visited:
                     visited.add(i)
                     queue.append(i)
