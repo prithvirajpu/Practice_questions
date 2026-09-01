@@ -106,6 +106,7 @@ class LinkedList:
             if self.head:
                 self.head.prev=None
             return
+        
         temp=self.head
         while temp.next:
             if temp.next.data ==val:
@@ -114,6 +115,19 @@ class LinkedList:
                     temp.next.prev=temp
             else:
                 temp=temp.next
+# to remove all occurences 
+        # while self.head and self.head.data==val:
+        #     self.head=self.head.next
+        #     if self.head:
+        #         self.head.prev=None
+        # temp=self.head
+        # while temp and temp.next:
+        #     if temp.next.data==val:
+        #         temp.next=temp.next.next
+        #         if temp.next:
+        #             temp.next.prev=temp
+        #     else:
+        #         temp=temp.next
 
     def reverse(self):
         temp=self.head
