@@ -62,6 +62,20 @@ class Btree:
                 break
             else:
                 queue.append(current.right)
+    def closest(self,root,target):
+        if root is None:
+            return 
+        queue=[root]
+        close=root.data
+        while queue:
+            current=queue.pop(0)
+            if abs(target-current.data)<abs(target-close):
+                close=current.data
+            if current.left:
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
+        return close
     def inorder(self,root):
         if root is None:
             return
@@ -123,4 +137,5 @@ ans=y.LowestCommonAncestor(y.root,p,q)
 print('lca',ans.data)
 y.inorder(y.root)
 print(y.height())
+print('closest is ',y.closest(y.root,76))
 

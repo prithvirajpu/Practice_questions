@@ -63,3 +63,15 @@ while i<n:
 
 del arr[n:]
 print(arr)
+
+# two sum 
+arr=[10,24,6,14,4]
+new={}
+target=28
+
+for i in range(len(arr)):
+    balance=target-arr[i]
+    if balance in new:
+        print(f'the Indices are: {new[balance]},{i}')
+        break
+    new[arr[i]]=i
