@@ -21,6 +21,37 @@ for i in arr:
 print(small)
 print(large)
 
+# large, second large and third large
+arr=[11,44,22,88,33,99,55,77]
+
+large=0
+sec=0
+third=0
+for i in arr:
+    if i>large:
+        third=sec
+        sec=large
+        large=i
+    elif i>sec and i !=large:
+        third=sec
+        sec=i
+    elif i>third and i!=large and i !=sec:
+        third=i
+print(large)
+print(sec)
+print(third)
+
+# reverse the array
+arr=[11,44,22,88,33,99,55,77]
+
+j=len(arr)-1
+i=0
+while i<j:
+    arr[i],arr[j]=arr[j],arr[i]
+    i+=1
+    j-=1
+print(f'reversed array is {arr}')
+
 # Deleting item from certain position
 
 arr=[1,2,3,4,5]
@@ -75,3 +106,4 @@ for i in range(len(arr)):
         print(f'the Indices are: {new[balance]},{i}')
         break
     new[arr[i]]=i
+
