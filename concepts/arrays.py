@@ -1,3 +1,33 @@
+# person with max score
+
+scores = {"Alice": 450, "Bob": 780, "Charlie": 620, "Diana": 710}
+res=max(scores,key=scores.get)
+print(res)
+
+# Problem: You have a list of student records where each tuple contains (Name, Grade, Age).
+#  Sort the list primarily by Grade (descending), and if grades are equal, secondarily by Age (ascending).
+students = [("Alice", 85, 20), ("Bob", 95, 19), ("Charlie", 85, 18), ("Diana", 95, 21)]
+
+res=sorted(students,key=lambda x: (-x[1],x[2]))
+print(res)
+
+# Sort by the second element (the words)
+
+pairs = [(1, 'one'), (4, 'four'), (3, 'three'), (2, 'two')]
+sorted_pairs = sorted(pairs, key=lambda item: item[1])
+
+print(sorted_pairs)
+
+# sort by price
+products = [
+    {"name": "Laptop", "price": 1000},
+    {"name": "Mouse", "price": 25},
+    {"name": "Monitor", "price": 200},
+    {"name": "Keyboard", "price": 75}
+]
+res=sorted(products,key=lambda x: x['price'],reverse=True)
+print(res)
+
 # Find subarrays which give a target sum
 arr=[1,2,3,4,5,6,7]
 target=6
