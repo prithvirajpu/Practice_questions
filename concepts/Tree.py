@@ -112,17 +112,26 @@ class Btree:
         if left and right:
             return root
         return left if left else right
+
+
     def search(self,root,val):
         if root is None:
-            return None
-        if root.data == val:
-            return root
+            return False
+        if root.data==val:
+            return True
+        return (self.search(root.left,val) or self.search(root.right,val))
+    
+    # def search(self,root,val):
+    #     if root is None:
+    #         return None
+    #     if root.data == val:
+    #         return root
         
-        left = self.search(root.left, val)
-        if left:
-            return left
+    #     left = self.search(root.left, val)
+    #     if left:
+    #         return left
         
-        return self.search(root.right, val)
+    #     return self.search(root.right, val)
 
 
 
