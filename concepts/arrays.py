@@ -137,3 +137,19 @@ for i in range(len(arr)):
         break
     new[arr[i]]=i
 
+# merging sorted arrays
+
+arr1=[2,4,6,8]
+arr2=[1,3,5,7]
+
+left=0
+right=0
+res=[]
+for i in range(len(arr1)+len(arr2)-1):
+  if arr1[left]<arr2[right]:
+    res.append(arr1[left])
+    left+=1
+  else:
+    res.append(arr2[right])
+    right+=1
+print(res)
