@@ -1,3 +1,14 @@
+# remove the character before the * and remove the * as well
+s='leet**cod*e'
+# output=  lecoe
+res=[]
+for i in s:
+    if i=='*':
+        res.pop()
+    else:
+        res.append(i)
+print(res)
+
 # person with max score
 
 scores = {"Alice": 450, "Bob": 780, "Charlie": 620, "Diana": 710}
