@@ -14,9 +14,11 @@ class Graph:
             self.add_vertex(v1)
         if v2 not in self.adj_list:
             self.add_vertex(v2)
-
-        self.adj_list[v1].append(v2)
-        self.adj_list[v2].append(v1)
+        if v1 not in self.adj_list[v2]:
+            self.adj_list[v2].append(v1)
+        if v2 not in self.adj_list[v1]:
+            self.adj_list[v1].append(v2)
+        
 
     def show(self):
         for vertex in self.adj_list:
@@ -72,13 +74,24 @@ class Graph:
                     visited.add(n)
                     stack.append(n)
         return result
-    
+    def detect_cycle(self,vertex):
+        visited=set()
+        def dfs(current,parent):
+            visited.add(current)
+            for i in self.adj_list[current]:
+                if i not in visited:
+                    if dfs(i,current):
+                        return True
+                elif i!=parent:
+                    return True
+            return False
+        return dfs(vertex,None)
     
 g = Graph()
 g.add_edge("A", "B")
-g.add_edge("A", "C")
-g.add_edge("B", "D")
-
+g.add_edge("B", "C")
+g.add_edge("C", "A")
+print(g.detect_cycle('A'))
 print("Before removal:")
 g.show()
 
