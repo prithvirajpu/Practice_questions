@@ -262,6 +262,19 @@ class LinkedList:
         self.head = new_tail.next
         self.head.prev = None
         new_tail.next = None
+    def find_pairs_with_sum(self, target):
+        seen = set()
+        pairs = []
+        temp = self.head
+
+        while temp:
+            complement = target - temp.data
+            if complement in seen:
+                pairs.append((complement, temp.data))
+            seen.add(temp.data)
+            temp = temp.next
+
+        return pairs
 
             
             
