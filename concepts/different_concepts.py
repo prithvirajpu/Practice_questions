@@ -90,3 +90,18 @@ print(os.getenv('secret_key'))
 def fn(a):
     assert a<0,'it is greater'
 # fn(10)
+
+# function that only runs once
+def run_once(fn):
+    run=False
+    def inner(*args,**kwargs):
+        nonlocal run
+        if not run:
+            run=True
+            fn()
+    return inner
+@run_once
+def check():
+    print('checking run twice')
+check()
+check()
