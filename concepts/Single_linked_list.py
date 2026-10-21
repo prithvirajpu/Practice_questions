@@ -337,3 +337,20 @@ x.print_list()
             if l2: l2 = l2.next
 
         return dummy.next
+    
+    # if the value is even then remove the left value from the list 
+    def delete_val (self):
+        if self.head is None or self.head.next is None:
+            return
+        dummy=Node(0)
+        dummy.next=self.head
+        curr=self.head
+        prev=dummy
+        while curr and curr.next:
+            if curr.next.data %2==0:
+                prev.next=curr.next
+                curr=curr.next
+            else:
+                prev=curr
+                curr=curr.next
+        self.head=dummy.next

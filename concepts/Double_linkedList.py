@@ -275,7 +275,28 @@ class LinkedList:
             temp = temp.next
 
         return pairs
-
+    # if the value is even then remove the left value from the list 
+    def delete_val (self): 
+        if self.head is None or self.head.next is None:
+            return
+        dummy=Node(0)
+        dummy.next=self.head
+        self.head.prev=dummy
+        prev=dummy
+        curr=self.head
+        while curr and curr.next:
+            if curr.next.data%2==0:
+                curr.next.prev=prev
+                prev.next=curr.next
+                curr=curr.next
+            else:
+                prev=curr
+                curr=curr.next
+        if self.head:
+            self.head=dummy.next
+            self.head.prev=None
+            
+                
             
             
 
