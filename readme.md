@@ -27,6 +27,7 @@ Each topic follows the same structure:
 | 14 | [Memoization / `lru_cache`](#14-🧠-memoization--lru_cache) |
 | 15 | [Duck Typing](#15-🦆-duck-typing) |
 | 16 | [Metaclasses](#16-🏗️-metaclasses) |
+| 17 | [Virtual memory](#16-🏗️-virtual memory) |
 
 ---
 
@@ -506,6 +507,7 @@ A metaclass is the **"class of a class"** — it defines how classes themselves 
 Django's ORM uses metaclasses to automatically convert model class attributes into database table fields.
 
 **💻 Code Example:**
+
 ```python
 class SingletonMeta(type):
     _instances = {}
@@ -522,6 +524,20 @@ db1 = Database()
 db2 = Database()
 print(db1 is db2)  # True -- same instance, always
 ```
+
+---
+
+## 17. 💻 Virtual Memory
+
+**📖 Definition:**
+Virtual memory is a memory management technique that uses a portion of the hard drive or SSD as an extension of physical RAM.
+
+**🎯 Why it's used:**
+- Compensates for physical memory shortages when RAM is full
+- Allows the system to run larger applications or multiple programs simultaneously
+
+**🌍 Real-world use case:**
+Operating systems use virtual memory (such as swap space or page files) to keep apps running smoothly when physical RAM is exhausted, trading off a bit of speed for extra capacity.
 
 ---
 
