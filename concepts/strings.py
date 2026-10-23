@@ -1,3 +1,23 @@
+# longest palindromic substring
+
+s='abbabba'
+def long_palindrome(s):
+  def expand(l,r):
+    while l>=0 and r<len(s) and s[l]==s[r]:
+      l-=1
+      r+=1
+    return s[l+1:r]
+  result=''
+  for i in range(len(s)):
+    odd=expand(i,i)
+    even=expand(i,i+1)
+    if len(odd)>len(result):
+      result=odd
+    if len(even)>len(result):
+      result=even
+  return result
+print(long_palindrome(s))
+
 # remove the non string values from the dict
 data={'name':'prithviraj','age':23}
 for i in list(data.keys()):
