@@ -310,6 +310,28 @@ class LinkedList:
         if self.head:
             self.head=dummy.next
             self.head.prev=None
+    # simple approach readable
+    def remove_left_of_even(self):
+        if not self.head:
+            return
+            
+        curr = self.head
+        while curr:
+            # Check if the current node is even and has a left neighbor
+            if curr.data % 2 == 0 and curr.prev:
+                to_delete = curr.prev
+                left_node = to_delete.prev
+                
+                if left_node:
+                    # Bypass the left node
+                    left_node.next = curr
+                    curr.prev = left_node
+                else:
+                    # If the left node to delete is the head, update self.head
+                    self.head = curr
+                    self.head.prev = None
+                    
+            curr = curr.next
             
                 
             

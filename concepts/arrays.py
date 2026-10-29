@@ -1,3 +1,5 @@
+
+
 # remove the character before the * and remove the * as well
 s='leet**cod*e'
 # output=  lecoe
