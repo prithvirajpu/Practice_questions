@@ -128,6 +128,21 @@ class LinkedList:
         #             temp.next.prev=temp
         #     else:
         #         temp=temp.next
+    def even_number_removal(self):
+        while self.head and self.head.data%2==0:
+            self.head=self.head.next
+        if self.head:
+            self.head.prev = None
+        if self.head is None:
+            return
+        temp=self.head
+        while temp and temp.next:
+            if temp.next.data%2==0:
+                temp.next=temp.next.next
+                if temp.next:
+                    temp.next.prev = temp
+            else:
+                temp=temp.next
 
     def reverse(self):
         temp=self.head
