@@ -1,4 +1,15 @@
+# flattening deeply nested array
 
+arr=[1,2,3,[2,[5,[10,21,[99]],12],3,4]]
+def flat(arr):
+  result=[]
+  for i in arr:
+    if isinstance(i,list):
+      result.extend(flat(i))
+    else:
+      result.append(i)
+  return result
+print(flat(arr))
 
 # remove the character before the * and remove the * as well
 s='leet**cod*e'
