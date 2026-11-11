@@ -133,7 +133,20 @@ class Btree:
         
     #     return self.search(root.right, val)
 
-
+    def leafCount(self,root):
+        if root is None:
+            return 0
+        queue=[root]
+        leaf_count=0
+        while queue:
+            current=queue.pop(0)
+            if current.left is None and current.right is None:
+                leaf_count+=1
+            if current.left is not None:
+                queue.append(current.left)
+            if current.right is not None:
+                queue.append(current.right)
+        return leaf_count
 
 y=Btree()
 y.insert(10)
@@ -143,8 +156,12 @@ y.insert(80)
 p=y.search(y.root,80)
 q=y.search(y.root,70)
 ans=y.LowestCommonAncestor(y.root,p,q)
-print('lca',ans.data)
+if ans:
+    print('lca',ans.data)
+else:
+    print('could not find any lowest ancestor')
 y.inorder(y.root)
 print(y.height())
 print('closest is ',y.closest(y.root,76))
-
+print('---')
+print(y.leafCount(y.root))

@@ -86,11 +86,29 @@ class Graph:
                     return True
             return False
         return dfs(vertex,None)
+    def short_path(self,start,target):
+        if start not in self.adj_list or target not in self.adj_list:
+            return 
+        queue=[(start,start)]
+        visited=set()
+        visited.add(start)
+        while queue:
+            current,path=queue.pop(0)
+            if current==target:
+                return path
+            for i in self.adj_list[current]:
+                if i not in visited:
+                    visited.add(i)
+                    queue.append((i,path+' -> '+i))
+        return None
+                
     
 g = Graph()
 g.add_edge("A", "B")
 g.add_edge("B", "C")
 g.add_edge("C", "A")
+g.add_edge("C", "D")
+print(g.short_path('A','D'))
 print(g.detect_cycle('A'))
 print("Before removal:")
 g.show()
