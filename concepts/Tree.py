@@ -147,7 +147,44 @@ class Btree:
             if current.right is not None:
                 queue.append(current.right)
         return leaf_count
-
+    
+    def delete_node(self,root,target):
+        if root is None:
+            return 
+        if root.left is None and root.right is None:
+            if root.data==target:
+                root=None
+            return 
+        queue=[root]
+        nodes=[]
+        target_node=None
+        while queue:
+            current=queue.pop(0)
+            nodes.append(current)
+            if current.data==target:
+                target_node=current
+            if current.left:
+                queue.append(current.left)            
+            if current.right:
+                queue.append(current.right)
+        if target_node is None:
+            return
+        leaf=nodes[-1]
+        target_node.data = leaf.data
+        self.remove_node(leaf)
+    def remove_node(self,node):
+        queue=[self.root]
+        while queue:
+            current=queue.pop(0)
+            if current.left:
+                if current.left.data==node.data:
+                    current.left=None
+                return            
+            if current.right:
+                if current.right.data==node.data:
+                    current.right=None
+                return 
+            
 y=Btree()
 y.insert(10)
 y.insert(90)
@@ -165,3 +202,5 @@ print(y.height())
 print('closest is ',y.closest(y.root,76))
 print('---')
 print(y.leafCount(y.root))
+y.delete_node(y.root,10)
+y.inorder(y.root)
